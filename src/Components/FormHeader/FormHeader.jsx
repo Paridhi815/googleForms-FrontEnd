@@ -9,6 +9,13 @@ const FormHeader = () => (
     <div className="Form-Submit">
       <SubmitButton />
     </div>
+    <div className="Form-Input">
+      <input
+        type="text"
+        className="Form-Title-Input"
+        placeholder="Untitled Form"
+      />
+    </div>
     <div className="Add-Button">
       <PlusAddButton />
     </div>
