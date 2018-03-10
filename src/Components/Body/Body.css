@@ -1,0 +1,6 @@
+.Body{
+    background-color: rgb(235,232,247);
+    /* background-color: blue; */
+    display: flex;
+    flex-grow: 1;
+}

@@ -1,0 +1,15 @@
+.FormHeader{
+    height: 200px;
+    background-color: white;
+    border-bottom: 3px solid rgb(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.Form-Submit{
+    margin-left: auto;
+}
+.Add-Button{
+    margin-top: auto;
+    margin-left: auto;
+}

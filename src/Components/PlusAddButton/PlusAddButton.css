@@ -1,0 +1,13 @@
+.PlusAdd-button{
+    background-color: white;
+    border: none;
+    color:rgb(95,65,177);
+    background: white;
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.material-icons{
+    font-size: 50px;
+}

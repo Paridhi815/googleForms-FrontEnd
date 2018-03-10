@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-
+import CreateForm from '../CreateForm/CreateForm';
 // const Axios = require('axios');
 
 class App extends React.Component {
@@ -13,8 +13,9 @@ class App extends React.Component {
   render() {
     if (this.state.pageNumber === 0) {
       return (
-        <div>
-                  Paridhi
+        <div className="App">
+          {/* Paridhi */}
+          <CreateForm />
         </div>
       );
     }

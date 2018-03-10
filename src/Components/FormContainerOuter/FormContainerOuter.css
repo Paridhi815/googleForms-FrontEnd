@@ -1,0 +1,9 @@
+.FormContainerOuter{
+    width:50%;
+    height: 50%;
+    background-color: white;
+    position: absolute;
+    top:20%;
+    right:25%;
+    display: flex;
+}
