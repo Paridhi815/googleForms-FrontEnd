@@ -1,16 +1,20 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './PlusAddButton.css';
 
-const PlusAddButton = () => (
+const PlusAddButton = props => (
   <div className="PlusAddButton">
-    <button className="PlusAdd-button" >
+    <button
+      className="PlusAdd-button"
+      onClick={() => props.onAddClick()}
+    >
       <i className="material-icons">add_circle</i>
     </button>
   </div>
 );
 
 PlusAddButton.propTypes = {
+  onAddClick: PropTypes.func.isRequired,
 };
 
 PlusAddButton.defaultProps = {

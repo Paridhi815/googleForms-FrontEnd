@@ -1,10 +1,10 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './FormHeader.css';
 import PlusAddButton from '../PlusAddButton/PlusAddButton';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
-const FormHeader = () => (
+const FormHeader = props => (
   <div className="FormHeader">
     <div className="Form-Submit">
       <SubmitButton />
@@ -17,12 +17,13 @@ const FormHeader = () => (
       />
     </div>
     <div className="Add-Button">
-      <PlusAddButton />
+      <PlusAddButton onAddClick={() => props.onAddClick()} />
     </div>
   </div>
 );
 
 FormHeader.propTypes = {
+  onAddClick: PropTypes.func.isRequired,
 };
 
 FormHeader.defaultProps = {
