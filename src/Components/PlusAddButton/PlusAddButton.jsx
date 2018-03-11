@@ -8,7 +8,7 @@ const PlusAddButton = props => (
       className={props.classValue}
       onClick={() => props.onAddClick()}
     >
-      <i className="material-icons">add_circle</i>
+      <i className="material-icons Plus-Button">add_circle</i>
     </button>
   </div>
 );

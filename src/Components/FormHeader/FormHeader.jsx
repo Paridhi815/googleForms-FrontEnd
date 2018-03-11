@@ -16,6 +16,7 @@ const FormHeader = props => (
         type="text"
         className="Form-Title-Input"
         placeholder="Untitled Form"
+        onChange={event => props.onFormTitleChange(event)}
       />
     </div>
     <div className="Add-Button">
@@ -30,6 +31,7 @@ const FormHeader = props => (
 FormHeader.propTypes = {
   onAddClick: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  onFormTitleChange: PropTypes.func.isRequired,
 };
 
 FormHeader.defaultProps = {

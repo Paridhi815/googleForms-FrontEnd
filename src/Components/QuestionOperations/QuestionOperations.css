@@ -1,0 +1,25 @@
+.QuestionOperations{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+.Question-Delete-Button{
+    background-color: white;
+    border: none;
+    color:rgb(0,0,0,0.5);
+    background: white;
+}
+
+.Delete-Button{
+    font-size: 20px;
+}
+
+.Check-ifRequired{
+    font-size: 20px;
+    border: 1px solid black;
+    margin-top: 2px;
+    background-color: aqua;
+}
