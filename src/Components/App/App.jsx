@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import CreateForm from '../CreateForm/CreateForm';
 import DisplayForms from '../DisplayForms/DisplayForms';
+import AnswerQuestions from '../AnswerQuestions/AnswerQuestions';
 // const Axios = require('axios');
 
 class App extends React.Component {
@@ -24,6 +25,19 @@ class App extends React.Component {
     });
   }
 
+
+  onAnswerSubmit() {
+    this.setState({
+      pageNumber: 0,
+    });
+  }
+
+  onOpenFormToAnswer() {
+    this.setState({
+      pageNumber: 2,
+    });
+  }
+
   render() {
     if (this.state.pageNumber === 1) {
       return (
@@ -38,8 +52,15 @@ class App extends React.Component {
         <div>
           <DisplayForms
             onCreateForm={() => this.onCreateForm()}
+            onOpenFormToAnswer={() => this.onOpenFormToAnswer()}
           />
         </div>
+      );
+    } else if (this.state.pageNumber === 2) {
+      return (
+        <AnswerQuestions
+          onAnswerSubmit={() => this.onAnswerSubmit()}
+        />
       );
     }
     return (

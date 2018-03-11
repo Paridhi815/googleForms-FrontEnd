@@ -49,6 +49,7 @@ class DisplayForms extends React.Component {
               {this.state.allForms.map(eachForm => (
                 <AvailableForms
                   formTitle={eachForm.title}
+                  onOpenFormToAnswer={() => this.props.onOpenFormToAnswer()}
                 />
                 ))}
               <AvailableForms />
@@ -61,7 +62,7 @@ class DisplayForms extends React.Component {
 }
 DisplayForms.propTypes = {
   onCreateForm: PropTypes.func.isRequired,
-//   hello: PropTypes.string,
+  onOpenFormToAnswer: PropTypes.func.isRequired,
 //   name: PropTypes.string,
 };
 

@@ -5,7 +5,10 @@ import './AvailableForms.css';
 const AvailableForms = props => (
   <div className="Available-Form-Container">
 
-    <div className="AvailableForms">
+    <div
+      className="AvailableForms"
+      onClick={() => props.onOpenFormToAnswer()}
+    >
 
       {props.formTitle}
     </div>
