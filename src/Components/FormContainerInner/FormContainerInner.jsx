@@ -1,12 +1,12 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './FormContainerInner.css';
 import FormHeader from '../FormHeader/FormHeader';
 import QuestionBoxContainer from '../QuestionBoxContainer/QuestionBoxContainer';
 
 class FormContainerInner extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       formTitle: 'hello',
       questions: [{
@@ -28,6 +28,7 @@ class FormContainerInner extends React.Component {
     });
   }
 
+
   populateQuestions() {
     return this.state.questions.map(question => (
       <QuestionBoxContainer
@@ -45,6 +46,7 @@ class FormContainerInner extends React.Component {
         <FormHeader
           onAddClick={() => this.onAdd()}
           formTitle={this.state.formTitle}
+          onSubmit={() => this.props.onSubmit()}
         />
         {/* <QuestionBoxContainer /> */}
         {this.populateQuestions()}
@@ -54,6 +56,7 @@ class FormContainerInner extends React.Component {
 }
 
 FormContainerInner.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 FormContainerInner.defaultProps = {

@@ -7,7 +7,9 @@ import SubmitButton from '../SubmitButton/SubmitButton';
 const FormHeader = props => (
   <div className="FormHeader">
     <div className="Form-Submit">
-      <SubmitButton />
+      <SubmitButton
+        onSubmit={() => props.onSubmit()}
+      />
     </div>
     <div className="Form-Input">
       <input
@@ -24,6 +26,7 @@ const FormHeader = props => (
 
 FormHeader.propTypes = {
   onAddClick: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 FormHeader.defaultProps = {

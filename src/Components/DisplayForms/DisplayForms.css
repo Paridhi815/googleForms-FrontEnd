@@ -1,0 +1,17 @@
+.DisplayForms{
+    display: flex;
+    flex-grow: 1;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.DisplayForms-Header{
+    display: flex;
+    flex-direction: column;
+    /* height: 100px;
+    background-color: aqua; */
+}
+.DisplayForms-Body{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}

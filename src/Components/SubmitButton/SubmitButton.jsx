@@ -1,16 +1,20 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './SubmitButton.css';
 
-const SubmitButton = () => (
+const SubmitButton = props => (
   <div className="SubmitButton">
-    <button className="Submit-Button" >
+    <button
+      className="Submit-Button"
+      onClick={() => props.onSubmit()}
+    >
       SUBMIT
     </button>
   </div>
 );
 
 SubmitButton.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 SubmitButton.defaultProps = {
