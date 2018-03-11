@@ -1,0 +1,4 @@
+.QuestionBoxContainer{
+    display: flex;
+    flex-direction: column;
+}
