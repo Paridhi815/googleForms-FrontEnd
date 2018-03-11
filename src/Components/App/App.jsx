@@ -3,6 +3,7 @@ import './App.css';
 import CreateForm from '../CreateForm/CreateForm';
 import DisplayForms from '../DisplayForms/DisplayForms';
 import AnswerQuestions from '../AnswerQuestions/AnswerQuestions';
+import ResponsesContainer from '../ResponsesContainer/ResponsesContainer';
 // const Axios = require('axios');
 
 class App extends React.Component {
@@ -38,6 +39,12 @@ class App extends React.Component {
     });
   }
 
+  onResponseClick() {
+    this.setState({
+      pageNumber: 3,
+    });
+  }
+
   render() {
     if (this.state.pageNumber === 1) {
       return (
@@ -53,6 +60,7 @@ class App extends React.Component {
           <DisplayForms
             onCreateForm={() => this.onCreateForm()}
             onOpenFormToAnswer={() => this.onOpenFormToAnswer()}
+            onResponseClick={() => this.onResponseClick()}
           />
         </div>
       );
@@ -65,7 +73,7 @@ class App extends React.Component {
     }
     return (
       <div>
-            Mohindra
+        <ResponsesContainer />
       </div>
     );
   }

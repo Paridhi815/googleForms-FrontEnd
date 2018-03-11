@@ -1,0 +1,17 @@
+.ResponsesContainer{
+    display: flex;
+    flex-grow: 1;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.ResponsesContainer-Header{
+    display: flex;
+    flex-direction: column;
+    /* height: 100px;
+    background-color: aqua; */
+}
+.ResponsesContainer-Body{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}

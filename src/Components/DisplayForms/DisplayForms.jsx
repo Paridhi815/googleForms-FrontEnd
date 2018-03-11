@@ -50,6 +50,7 @@ class DisplayForms extends React.Component {
                 <AvailableForms
                   formTitle={eachForm.title}
                   onOpenFormToAnswer={() => this.props.onOpenFormToAnswer()}
+                  onResponseClick={() => this.props.onResponseClick()}
                 />
                 ))}
               <AvailableForms />
@@ -63,7 +64,7 @@ class DisplayForms extends React.Component {
 DisplayForms.propTypes = {
   onCreateForm: PropTypes.func.isRequired,
   onOpenFormToAnswer: PropTypes.func.isRequired,
-//   name: PropTypes.string,
+  onResponseClick: PropTypes.func.isRequired,
 };
 
 DisplayForms.defaultProps = {

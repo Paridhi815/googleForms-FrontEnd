@@ -13,13 +13,18 @@ const AvailableForms = props => (
       {props.formTitle}
     </div>
     <div >
-      <button className="Response-Button">Responses</button>
+      <button
+        className="Response-Button"
+        onClick={() => props.onResponseClick()}
+      >
+      Responses
+      </button>
     </div>
   </div>
 );
 
 AvailableForms.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
+  onResponseClick: PropTypes.func.isRequired,
   formTitle: PropTypes.string,
 //   name: PropTypes.string,
 };
