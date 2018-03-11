@@ -1,8 +1,24 @@
-.AvailableForms{
+.Available-Form-Container{
     margin-left:50px;
     margin-bottom:50px;
+    text-align: center;
+}
+
+.AvailableForms{
     background-color: white;
     width:220px;
     height:140px;
     border:1px solid rgb(0,0,0,0.3);
+}
+.Response-Button{
+    margin-top: 15px;
+    background-color: rgb(235,232,247);
+    border: none;
+    border-bottom: 1px solid rgb(0,0,0,0.4);
+    color:black;
+    /* background: white; */
+    /* margin-right: 10px;
+    margin-top: 15px; */
+    font-size: 15px;
+    text-transform: uppercase;
 }

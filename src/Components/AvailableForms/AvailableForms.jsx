@@ -9,6 +9,9 @@ const AvailableForms = props => (
 
       {props.formTitle}
     </div>
+    <div >
+      <button className="Response-Button">Responses</button>
+    </div>
   </div>
 );
 
