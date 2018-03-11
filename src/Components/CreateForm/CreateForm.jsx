@@ -4,13 +4,16 @@ import './CreateForm.css';
 import Header from '../Header/Header';
 import Body from '../Body/Body';
 import FormContainerOuter from '../FormContainerOuter/FormContainerOuter';
+import FormContainerInner from '../FormContainerInner/FormContainerInner';
 
 const CreateForm = () => (
   <div className="CreateForm">
     <div className="CreateForm-Header" >
       <Header />
     </div>
-    <FormContainerOuter />
+    <FormContainerOuter >
+      <FormContainerInner />
+    </FormContainerOuter>
     <div className="CreateForm-Body">
       <Body />
     </div>

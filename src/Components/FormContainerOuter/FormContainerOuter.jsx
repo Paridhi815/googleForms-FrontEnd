@@ -1,15 +1,16 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './FormContainerOuter.css';
-import FormContainerInner from '../FormContainerInner/FormContainerInner';
 
-const FormContainerOuter = () => (
+const FormContainerOuter = props => (
   <div className="FormContainerOuter">
-    <FormContainerInner />
+    {props.children}
+    {/* <FormContainerInner /> */}
   </div>
 );
 
 FormContainerOuter.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 FormContainerOuter.defaultProps = {
