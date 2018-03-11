@@ -1,4 +1,4 @@
-.PlusAdd-button{
+.purple{
     background-color: white;
     border: none;
     color:rgb(95,65,177);
@@ -10,4 +10,14 @@
 
 .material-icons{
     font-size: 50px;
+}
+
+.white{
+    background-color: rgb(95,65,177);
+    border: none;
+    color:white;
+    background: rgb(95,65,177);
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }

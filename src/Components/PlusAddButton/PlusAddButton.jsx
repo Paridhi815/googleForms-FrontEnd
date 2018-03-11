@@ -5,7 +5,7 @@ import './PlusAddButton.css';
 const PlusAddButton = props => (
   <div className="PlusAddButton">
     <button
-      className="PlusAdd-button"
+      className={props.classValue}
       onClick={() => props.onAddClick()}
     >
       <i className="material-icons">add_circle</i>
@@ -15,9 +15,11 @@ const PlusAddButton = props => (
 
 PlusAddButton.propTypes = {
   onAddClick: PropTypes.func.isRequired,
+  classValue: PropTypes.string,
 };
 
 PlusAddButton.defaultProps = {
+  classValue: '',
 };
 
 export default PlusAddButton;

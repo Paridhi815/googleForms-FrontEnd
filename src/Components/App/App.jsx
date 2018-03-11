@@ -14,25 +14,31 @@ class App extends React.Component {
 
   onSubmit() {
     this.setState({
+      pageNumber: 0,
+    });
+  }
+
+  onCreateForm() {
+    this.setState({
       pageNumber: 1,
     });
   }
 
-
   render() {
-    if (this.state.pageNumber === 0) {
+    if (this.state.pageNumber === 1) {
       return (
         <div className="App">
-          {/* Paridhi */}
           <CreateForm
             onSubmit={() => this.onSubmit()}
           />
         </div>
       );
-    } else if (this.state.pageNumber === 1) {
+    } else if (this.state.pageNumber === 0) {
       return (
         <div>
-          <DisplayForms />
+          <DisplayForms
+            onCreateForm={() => this.onCreateForm()}
+          />
         </div>
       );
     }

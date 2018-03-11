@@ -4,7 +4,7 @@ import './AvailableForms.css';
 
 const AvailableForms = props => (
   <div className="Available-Form-Container">
-    <p className="Label">Available Forms</p>
+
     <div className="AvailableForms">
 
       {props.formTitle}

@@ -19,7 +19,10 @@ const FormHeader = props => (
       />
     </div>
     <div className="Add-Button">
-      <PlusAddButton onAddClick={() => props.onAddClick()} />
+      <PlusAddButton
+        classValue="purple"
+        onAddClick={() => props.onAddClick()}
+      />
     </div>
   </div>
 );
