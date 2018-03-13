@@ -13,9 +13,7 @@ class DisplayForms extends React.Component {
     super(props);
     this.state = {
       allForms: [],
-      // questions: [],
     };
-    // this.onOpenFormToAnswerHandler = this.onOpenFormToAnswerHandler.bind(this);
   }
 
   componentDidMount() {
@@ -29,20 +27,6 @@ class DisplayForms extends React.Component {
     });
     console.log(this.state.allForms);
   }
-
-
-  // onOpenFormToAnswerHandler = (formId) => {
-  //   Axios({
-  //     method: 'GET',
-  //     url: `/forms/${formId}`,
-  //   }).then((questionArray) => {
-  //     this.setState({
-  //       questions: questionArray,
-  //     });
-  //   }).then(() => {
-  //     this.props.onOpenFormToAnswer();
-  //   });
-  // }
 
   render() {
     return (
@@ -66,7 +50,8 @@ class DisplayForms extends React.Component {
                 <AvailableForms
                   formTitle={eachForm.title}
                   formId={eachForm.id}
-                  onOpenFormToAnswer={(formId, formTitle) => this.props.onOpenFormToAnswer(formId, formTitle)}
+                  onOpenFormToAnswer={(formId, formTitle) =>
+                    this.props.onOpenFormToAnswer(formId, formTitle)}
                   onResponseClick={() => this.props.onResponseClick()}
                 />
                 ))}
@@ -82,12 +67,6 @@ DisplayForms.propTypes = {
   onCreateForm: PropTypes.func.isRequired,
   onOpenFormToAnswer: PropTypes.func.isRequired,
   onResponseClick: PropTypes.func.isRequired,
-};
-
-DisplayForms.defaultProps = {
-//   title: '',
-//   hello: '',
-//   name: '',
 };
 
 export default DisplayForms;

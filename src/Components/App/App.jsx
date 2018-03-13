@@ -79,6 +79,8 @@ class App extends React.Component {
       return (
         <AnswerQuestions
           onAnswerSubmit={() => this.onAnswerSubmit()}
+          formTitle={this.state.formTitle}
+          questions={this.state.questions}
         />
       );
     }

@@ -7,33 +7,42 @@ class AnswerForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formTitle: 'hello',
-      questions: [{
-        questionText: 'pari',
-        isRequired: false,
-        questionType: 'date',
-      }],
-      answer: '',
+      answer: {},
     };
   }
 
 
-  onAnswerChange(event) {
+  onAnswerChange(event, questionId) {
+    const answerArr = Object.assign({}, this.state.answer);
+    answerArr[questionId] = event.target.value;
     this.setState({
-      answer: event.target.value,
+      answer: answerArr,
     });
     console.log(this.state.answer);
   }
 
-  render() {
-    return (
-      <div className="AnswerForm">
+  displayQuestions=() => (
+    this.props.questions.map(question => (
+      <div>
+        <div>
+          {question.questionText}
+        </div>
         <input
           type="text"
           className="Answer-Input"
           placeholder="Your Answer"
-          onChange={event => this.onAnswerChange(event)}
+          onChange={event => this.onAnswerChange(event, question.id)}
         />
+      </div>
+    ))
+  )
+
+  render() {
+    return (
+      <div className="AnswerForm">
+        {this.props.formTitle}
+        {this.displayQuestions()}
+
         <SubmitButton
           onSubmit={() => this.props.onAnswerSubmit()}
         />
@@ -43,10 +52,13 @@ class AnswerForm extends React.Component {
 }
 
 AnswerForm.propTypes = {
+  formTitle: PropTypes.string,
+  questions: PropTypes.array.isRequired,
   onAnswerSubmit: PropTypes.func.isRequired,
 };
 
 AnswerForm.defaultProps = {
+  formTitle: '',
 };
 
 export default AnswerForm;

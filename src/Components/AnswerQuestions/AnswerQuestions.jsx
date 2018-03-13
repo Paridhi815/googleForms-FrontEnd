@@ -14,6 +14,8 @@ const AnswerQuestions = props => (
     <FormContainerOuter >
       <AnswerForm
         onAnswerSubmit={() => props.onAnswerSubmit()}
+        formTitle={props.formTitle}
+        questions={props.questions}
       />
     </FormContainerOuter>
     <div className="AnswerQuestions-Body">
@@ -24,13 +26,12 @@ const AnswerQuestions = props => (
 
 AnswerQuestions.propTypes = {
   onAnswerSubmit: PropTypes.func.isRequired,
-//   name: PropTypes.string,
+  formTitle: PropTypes.string,
+  questions: PropTypes.array.isRequired,
 };
 
 AnswerQuestions.defaultProps = {
-//   title: '',
-//   hello: '',
-//   name: '',
+  formTitle: '',
 };
 
 export default AnswerQuestions;
