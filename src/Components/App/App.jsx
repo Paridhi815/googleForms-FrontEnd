@@ -14,6 +14,7 @@ class App extends React.Component {
       pageNumber: 0,
       formTitle: '',
       questions: [],
+      questionResponses: [],
     };
   }
 
@@ -50,10 +51,17 @@ class App extends React.Component {
     console.log('q', this.state.questions);
   }
 
-  onResponseClick() {
-    this.setState({
-      pageNumber: 3,
+  onResponseClick=(formId) => {
+    Axios({
+      method: 'GET',
+      url: `/responses/${formId}`,
+    }).then((response) => {
+      this.setState({
+        pageNumber: 3,
+        questionResponses: response.data[0].questions,
+      });
     });
+    console.log('res', this.state.questionResponses);
   }
 
   render() {
@@ -71,7 +79,7 @@ class App extends React.Component {
           <DisplayForms
             onCreateForm={() => this.onCreateForm()}
             onOpenFormToAnswer={(formId, formTitle) => this.onOpenFormToAnswer(formId, formTitle)}
-            onResponseClick={() => this.onResponseClick()}
+            onResponseClick={formId => this.onResponseClick(formId)}
           />
         </div>
       );
@@ -86,7 +94,9 @@ class App extends React.Component {
     }
     return (
       <div>
-        <ResponsesContainer />
+        <ResponsesContainer
+          questionResponses={this.state.questionResponses}
+        />
       </div>
     );
   }

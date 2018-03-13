@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import './AnswerForm.css';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
+const Axios = require('axios');
+
 class AnswerForm extends React.Component {
   constructor(props) {
     super(props);
@@ -21,21 +23,58 @@ class AnswerForm extends React.Component {
     console.log(this.state.answer);
   }
 
+  onAnswerSubmitHandler=() => {
+    Axios({
+      method: 'POST',
+      url: '/responses',
+      data: {
+        questionIdWithAnswerObject: this.state.answer,
+      },
+    }).then(() => {
+      this.props.onAnswerSubmit();
+    });
+  }
+
   displayQuestions=() => (
     this.props.questions.map(question => (
       <div>
         <div>
           {question.questionText}
         </div>
+        {this.displayAnswers(question.questionType, question.id)}
+      </div>
+    ))
+  )
+
+  displayAnswers=(questionType, questionId) => {
+    if (questionType === 'Short answer') {
+      return (
         <input
           type="text"
           className="Answer-Input"
           placeholder="Your Answer"
-          onChange={event => this.onAnswerChange(event, question.id)}
+          onChange={event => this.onAnswerChange(event, questionId)}
         />
-      </div>
-    ))
-  )
+      );
+    } else if (questionType === 'date') {
+      return (
+        <input
+          type="date"
+          className="Answer-Input"
+          placeholder="Your Answer"
+          onChange={event => this.onAnswerChange(event, questionId)}
+        />
+      );
+    }
+
+    return (
+      <textarea
+        className="Answer-Input"
+        placeholder="Your Answer"
+        onChange={event => this.onAnswerChange(event, questionId)}
+      />
+    );
+  }
 
   render() {
     return (
@@ -44,7 +83,7 @@ class AnswerForm extends React.Component {
         {this.displayQuestions()}
 
         <SubmitButton
-          onSubmit={() => this.props.onAnswerSubmit()}
+          onSubmit={() => this.onAnswerSubmitHandler()}
         />
       </div>
     );

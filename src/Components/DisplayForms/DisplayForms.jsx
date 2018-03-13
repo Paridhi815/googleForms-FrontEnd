@@ -52,7 +52,7 @@ class DisplayForms extends React.Component {
                   formId={eachForm.id}
                   onOpenFormToAnswer={(formId, formTitle) =>
                     this.props.onOpenFormToAnswer(formId, formTitle)}
-                  onResponseClick={() => this.props.onResponseClick()}
+                  onResponseClick={formId => this.props.onResponseClick(formId)}
                 />
                 ))}
               <AvailableForms />

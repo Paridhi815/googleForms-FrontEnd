@@ -15,7 +15,7 @@ const AvailableForms = props => (
     <div >
       <button
         className="Response-Button"
-        onClick={() => props.onResponseClick()}
+        onClick={() => props.onResponseClick(props.formId)}
       >
       Responses
       </button>

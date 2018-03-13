@@ -6,13 +6,19 @@ import Body from '../Body/Body';
 import FormContainerOuter from '../FormContainerOuter/FormContainerOuter';
 import Responses from '../Responses/Responses';
 
-const ResponsesContainer = () => (
+const ResponsesContainer = props => (
   <div className="ResponsesContainer">
     <div className="ResponsesContainer-Header" >
       <Header />
     </div>
     <FormContainerOuter >
-      <Responses />
+      {
+        props.questionResponses.map(eachQuestionResponse =>
+          (<Responses
+            responses={eachQuestionResponse.answers}
+          />))
+      }
+      {/* <Responses /> */}
     </FormContainerOuter>
     <div className="ResponsesContainer-Body">
       <Body />

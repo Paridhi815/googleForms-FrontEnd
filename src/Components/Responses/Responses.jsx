@@ -9,11 +9,18 @@ class Responses extends React.Component {
 
     };
   }
+  responsesDisplay() {
+    return this.props.responses.map(eachAnswer => (
+      <div>
+        {eachAnswer.answerText}
+      </div>
+    ));
+  }
 
   render() {
     return (
       <div className="Responses">
-        Paridhi
+        {this.responsesDisplay()}
       </div>
     );
   }
