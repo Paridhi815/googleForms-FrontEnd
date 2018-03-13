@@ -13,10 +13,12 @@ class DisplayForms extends React.Component {
     super(props);
     this.state = {
       allForms: [],
+      // questions: [],
     };
+    // this.onOpenFormToAnswerHandler = this.onOpenFormToAnswerHandler.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Axios({
       method: 'GET',
       url: '/forms',
@@ -27,6 +29,20 @@ class DisplayForms extends React.Component {
     });
     console.log(this.state.allForms);
   }
+
+
+  // onOpenFormToAnswerHandler = (formId) => {
+  //   Axios({
+  //     method: 'GET',
+  //     url: `/forms/${formId}`,
+  //   }).then((questionArray) => {
+  //     this.setState({
+  //       questions: questionArray,
+  //     });
+  //   }).then(() => {
+  //     this.props.onOpenFormToAnswer();
+  //   });
+  // }
 
   render() {
     return (
@@ -49,7 +65,8 @@ class DisplayForms extends React.Component {
               {this.state.allForms.map(eachForm => (
                 <AvailableForms
                   formTitle={eachForm.title}
-                  onOpenFormToAnswer={() => this.props.onOpenFormToAnswer()}
+                  formId={eachForm.id}
+                  onOpenFormToAnswer={(formId, formTitle) => this.props.onOpenFormToAnswer(formId, formTitle)}
                   onResponseClick={() => this.props.onResponseClick()}
                 />
                 ))}

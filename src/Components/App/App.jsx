@@ -4,13 +4,16 @@ import CreateForm from '../CreateForm/CreateForm';
 import DisplayForms from '../DisplayForms/DisplayForms';
 import AnswerQuestions from '../AnswerQuestions/AnswerQuestions';
 import ResponsesContainer from '../ResponsesContainer/ResponsesContainer';
-// const Axios = require('axios');
+
+const Axios = require('axios');
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       pageNumber: 0,
+      formTitle: '',
+      questions: [],
     };
   }
 
@@ -33,10 +36,18 @@ class App extends React.Component {
     });
   }
 
-  onOpenFormToAnswer() {
-    this.setState({
-      pageNumber: 2,
+  onOpenFormToAnswer(formId, formTitle) {
+    Axios({
+      method: 'GET',
+      url: `/forms/${formId}`,
+    }).then((questionArray) => {
+      this.setState({
+        questions: questionArray.data,
+        formTitle,
+        pageNumber: 2,
+      });
     });
+    console.log('q', this.state.questions);
   }
 
   onResponseClick() {
@@ -59,7 +70,7 @@ class App extends React.Component {
         <div>
           <DisplayForms
             onCreateForm={() => this.onCreateForm()}
-            onOpenFormToAnswer={() => this.onOpenFormToAnswer()}
+            onOpenFormToAnswer={(formId, formTitle) => this.onOpenFormToAnswer(formId, formTitle)}
             onResponseClick={() => this.onResponseClick()}
           />
         </div>

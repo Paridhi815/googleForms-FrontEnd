@@ -7,7 +7,7 @@ const AvailableForms = props => (
 
     <div
       className="AvailableForms"
-      onClick={() => props.onOpenFormToAnswer()}
+      onClick={() => props.onOpenFormToAnswer(props.formId, props.formTitle)}
     >
 
       {props.formTitle}
@@ -26,13 +26,13 @@ const AvailableForms = props => (
 AvailableForms.propTypes = {
   onResponseClick: PropTypes.func.isRequired,
   formTitle: PropTypes.string,
-//   name: PropTypes.string,
+  onOpenFormToAnswer: PropTypes.func.isRequired,
+  formId: PropTypes.number,
 };
 
 AvailableForms.defaultProps = {
-//   title: '',
   formTitle: '',
-//   name: '',
+  formId: 0,
 };
 
 export default AvailableForms;
