@@ -3,28 +3,40 @@ import PropTypes from 'prop-types';
 import './FormContainerInner.css';
 import FormHeader from '../FormHeader/FormHeader';
 import QuestionBoxContainer from '../QuestionBoxContainer/QuestionBoxContainer';
-import QuestionOperations from '../QuestionOperations/QuestionOperations';
+
+const Axios = require('axios');
 
 class FormContainerInner extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formTitle: 'hello',
+      formTitle: '',
       questions: [{
-        questionText: 'pari',
+        questionText: '',
         isRequired: false,
         questionType: 'date',
       }],
-      questionText: '',
-      questionType: '',
     };
+    this.onQuestionChange = this.onQuestionChange.bind(this);
+  }
+  onSubmitHandler() {
+    Axios({
+      method: 'POST',
+      url: '/forms',
+      data: {
+        formTitle: this.state.formTitle,
+        questions: this.state.questions,
+      },
+    }).then(() => {
+      this.props.onSubmit();
+    });
   }
 
   onAdd() {
     const newQuestion = this.state.questions.concat({
-      questionText: 'paridhi',
-      isRequired: true,
-      questionType: 'short answer',
+      questionText: '',
+      isRequired: false,
+      questionType: 'date',
     });
     this.setState({
       questions: newQuestion,
@@ -36,49 +48,36 @@ class FormContainerInner extends React.Component {
     this.setState({
       formTitle: event.target.value,
     });
+    console.log('formTitle', this.state.formTitle);
   }
 
-  onQuestionTextChange(event) {
-    // const questionsObj = {};
-    // questionsObj.questionText = event.target.value;
-    // let questionsArray = [];
-    // questionsArray = this.state.questions;
-    // questionsArray.concat(questionsObj);
+  onQuestionChange(value, key, index) {
+    const quesArr = this.state.questions.slice();
+    quesArr[index][key] = value;
     this.setState({
-      questionText: event.target.value,
+      questions: quesArr,
     });
-    console.log('qtext', this.state.questionText);
-  }
-
-  onQuestionTypeChange(event) {
-    this.setState({
-      questionType: event.target.value,
-    });
-    console.log('qtype', this.state.questionType);
   }
 
   populateQuestions() {
-    return this.state.questions.map(question => (
+    return this.state.questions.map((question, index) => (
       <div className="Question-Repeat-Component">
         <QuestionBoxContainer
-          questionText={question.questionText}
-          questionType={question.questionType}
-          isRequired={question.isRequired}
-          onQuestionTextChange={event => this.onQuestionTextChange(event)}
-          onQuestionTypeChange={event => this.onQuestionTypeChange(event)}
-        />
+          questionNumber={index}
 
-        <QuestionOperations />
+          onQuestionChange={this.onQuestionChange}
+        />
       </div>
     ));
   }
+
   render() {
     return (
       <div className="FormContainerInner">
         <FormHeader
           onAddClick={() => this.onAdd()}
           formTitle={this.state.formTitle}
-          onSubmit={() => this.props.onSubmit()}
+          onSubmitHandler={() => this.onSubmitHandler()}
           onFormTitleChange={event => this.onFormTitleChange(event)}
         />
         {/* <QuestionBoxContainer /> */}

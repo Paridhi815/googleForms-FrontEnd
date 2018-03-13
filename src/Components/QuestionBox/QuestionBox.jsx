@@ -1,32 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './QuestionBox.css';
-import QuestionTypeDropdown from '../QuestionTypeDropdown/QuestionTypeDropdown';
 
-const QuestionBox = props => (
-  <div className="QuestionBox">
-    <div className="Question-Input">
-      <input
-        type="text"
-        className="Question-Title-Input"
-        placeholder="Untitled Question"
-        onChange={event => props.onQuestionTextChange(event)}
-      />
-    </div>
-    <div className="Dropdown-Countdown">
-      <QuestionTypeDropdown
-        onQuestionTypeChange={event => props.onQuestionTypeChange(event)}
-      />
-    </div>
-  </div>
-);
+class QuestionBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      questionText: '',
+      questionNumber: props.questionNumber,
+      questionType: '',
+    };
+  }
+
+  handleOuestionTextChange(event) {
+    this.setState({
+      questionText: event.target.value,
+    }, () => {
+      this.props.onQuestionChange(this.state.questionText, 'questionText', this.state.questionNumber);
+    });
+  }
+
+  handleOuestionTypeChange(event) {
+    this.setState({
+      questionType: event.target.value,
+    }, () => {
+      this.props.onQuestionChange(this.state.questionType, 'questionType', this.state.questionNumber);
+    });
+  }
+
+  render() {
+    return (
+      <div className="QuestionBox">
+        <div className="Question-Input">
+          <input
+            type="text"
+            name="questionText"
+            value={this.state.questionText}
+            className="Question-Title-Input"
+            placeholder="Untitled Question"
+            onChange={event => this.handleOuestionTextChange(event)}
+          />
+        </div>
+        <div className="Dropdown-Countdown">
+          <div className="QuestionTypeDropdown">
+            <select
+              name="questionType"
+              onChange={event => this.handleOuestionTypeChange(event)}
+            >
+              <option value="Date" ><i className="material-icons">date_range</i>Date</option>
+              <option value="Short answer"><i className="material-icons">short_text</i>Short answer</option>
+              <option value="Paragraph"><i className="material-icons">view_headline</i>Paragraph</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 QuestionBox.propTypes = {
-  onQuestionTextChange: PropTypes.func.isRequired,
-  onQuestionTypeChange: PropTypes.func.isRequired,
-};
-
-QuestionBox.defaultProps = {
+  onQuestionChange: PropTypes.func.isRequired,
+  questionNumber: PropTypes.number.isRequired,
 };
 
 export default QuestionBox;

@@ -8,7 +8,7 @@ const FormHeader = props => (
   <div className="FormHeader">
     <div className="Form-Submit">
       <SubmitButton
-        onSubmit={() => props.onSubmit()}
+        onSubmit={() => props.onSubmitHandler()}
       />
     </div>
     <div className="Form-Input">
@@ -30,7 +30,7 @@ const FormHeader = props => (
 
 FormHeader.propTypes = {
   onAddClick: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmitHandler: PropTypes.func.isRequired,
   onFormTitleChange: PropTypes.func.isRequired,
 };
 
