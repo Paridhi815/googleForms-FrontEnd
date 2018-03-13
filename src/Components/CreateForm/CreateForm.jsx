@@ -11,13 +11,15 @@ const CreateForm = props => (
     <div className="CreateForm-Header" >
       <Header />
     </div>
-    <FormContainerOuter >
-      <FormContainerInner
-        onSubmit={() => props.onSubmit()}
-      />
-    </FormContainerOuter>
+
     <div className="CreateForm-Body">
-      <Body />
+      <Body>
+        <FormContainerOuter >
+          <FormContainerInner
+            onSubmit={() => props.onSubmit()}
+          />
+        </FormContainerOuter>
+      </Body >
     </div>
   </div>
 );
