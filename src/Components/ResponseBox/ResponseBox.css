@@ -10,9 +10,7 @@
     flex-grow: 1;
     padding: 5%;
 }
-/* 
-.ResponseBox:nth-child(odd) { background: blue; }
-.ResponseBox:nth-child(even) { background: green; } */
+
 
 .Response-FormTitle{
     font-size: 40px;

@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       pageNumber: 0,
       formTitle: '',
-      questions: [],
+      answerQuestions: [],
       questionResponses: [],
       formName: '',
     };
@@ -44,12 +44,12 @@ class App extends React.Component {
       url: `/forms/${formId}`,
     }).then((questionArray) => {
       this.setState({
-        questions: questionArray.data,
+        answerQuestions: questionArray.data,
         formTitle,
         pageNumber: 2,
       });
     });
-    console.log('q', this.state.questions);
+    console.log('q', this.state.answerQuestions);
   }
 
   onResponseClick=(formId) => {
@@ -90,7 +90,7 @@ class App extends React.Component {
         <AnswerQuestions
           onAnswerSubmit={() => this.onAnswerSubmit()}
           formTitle={this.state.formTitle}
-          questions={this.state.questions}
+          answerQuestions={this.state.answerQuestions}
         />
       );
     }

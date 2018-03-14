@@ -10,17 +10,26 @@ class AnswerForm extends React.Component {
     super(props);
     this.state = {
       answer: {},
+      isRequiredOrNot: {},
+      disable: true,
     };
   }
-
-
-  onAnswerChange(event, questionId) {
+  onAnswerChange=(event, questionId) => {
+    const ans = event.target.value;
+    if (this.state.isRequiredOrNot[questionId]) {
+      if (ans.length === 0) {
+        this.state.isRequiredOrNot[questionId] = true;
+      } else {
+        this.state.isRequiredOrNot[questionId] = false;
+      }
+    }
     const answerArr = Object.assign({}, this.state.answer);
-    answerArr[questionId] = event.target.value;
+    answerArr[questionId] = ans;
     this.setState({
       answer: answerArr,
     });
     console.log(this.state.answer);
+    this.checkForDisable();
   }
 
   onAnswerSubmitHandler=() => {
@@ -35,13 +44,39 @@ class AnswerForm extends React.Component {
     });
   }
 
+  checkForDisable=() => {
+    for (let i = 0; i < Object.values(this.state.isRequiredOrNot).length; i += 1) {
+      if (Object.values(this.state.isRequiredOrNot)[i] === true) {
+        this.setState({
+          disable: true,
+        });
+        return;
+      }
+      this.setState({
+        disable: false,
+      });
+      return;
+    }
+    this.setState({
+      disable: false,
+    });
+  }
+
+  questionIsRequiredHandler=(questionId, isRequired) => {
+    if (isRequired === true) {
+      this.state.isRequiredOrNot[questionId] = true;
+    }
+  }
+
+
   displayQuestions=() => (
-    this.props.questions.map(question => (
+    this.props.answerQuestions.map(question => (
       <div>
         <div className="AnswerForm-questions">
           {question.questionText}
         </div>
         {this.displayAnswers(question.questionType, question.id)}
+        {this.questionIsRequiredHandler(question.id, question.isRequired)}
       </div>
     ))
   )
@@ -85,6 +120,7 @@ class AnswerForm extends React.Component {
         {this.displayQuestions()}
 
         <SubmitButton
+          disableValue={this.state.disable}
           onSubmit={() => this.onAnswerSubmitHandler()}
         />
       </div>
@@ -94,7 +130,7 @@ class AnswerForm extends React.Component {
 
 AnswerForm.propTypes = {
   formTitle: PropTypes.string,
-  questions: PropTypes.array.isRequired,
+  answerQuestions: PropTypes.array.isRequired,
   onAnswerSubmit: PropTypes.func.isRequired,
 };
 

@@ -26,14 +26,9 @@ const CreateForm = props => (
 
 CreateForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-//   hello: PropTypes.string,
-//   name: PropTypes.string,
 };
 
 CreateForm.defaultProps = {
-//   title: '',
-//   hello: '',
-//   name: '',
 };
 
 export default CreateForm;

@@ -6,9 +6,9 @@ class QuestionBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questionText: '',
+      questionText: props.questionText,
       questionNumber: props.questionNumber,
-      questionType: '',
+      questionType: props.questionType,
     };
   }
 
@@ -35,7 +35,7 @@ class QuestionBox extends React.Component {
           <input
             type="text"
             name="questionText"
-            value={this.state.questionText}
+            value={this.props.questionText}
             className="Question-Title-Input"
             placeholder="Untitled Question"
             onChange={event => this.handleOuestionTextChange(event)}
@@ -44,6 +44,7 @@ class QuestionBox extends React.Component {
         <div className="Dropdown-Countdown">
           <div className="QuestionTypeDropdown">
             <select
+              value={this.props.questionType}
               name="questionType"
               onChange={event => this.handleOuestionTypeChange(event)}
             >

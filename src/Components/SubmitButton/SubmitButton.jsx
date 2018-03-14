@@ -7,6 +7,7 @@ const SubmitButton = props => (
     <button
       className="Submit-Button"
       onClick={() => props.onSubmit()}
+      disabled={props.disableValue}
     >
       SUBMIT
     </button>

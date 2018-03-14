@@ -8,11 +8,15 @@ const QuestionBoxContainer = props => (
   <div className="QuestionBoxContainer">
     <QuestionBox
       questionNumber={props.questionNumber}
+      questionText={props.questionText}
+      questionType={props.questionType}
       onQuestionChange={props.onQuestionChange}
     />
     <QuestionOperations
       questionNumber={props.questionNumber}
+      isRequired={props.isRequired}
       onQuestionChange={props.onQuestionChange}
+      onQuestionDelete={props.onQuestionDelete}
     />
   </div>
 );
@@ -20,9 +24,7 @@ const QuestionBoxContainer = props => (
 QuestionBoxContainer.propTypes = {
   onQuestionChange: PropTypes.func.isRequired,
   questionNumber: PropTypes.number.isRequired,
-  // questionText: PropTypes.string.isRequired,
-  // questionType: PropTypes.string.isRequired,
-  // isRequired: PropTypes.bool.isRequired,
+  questions: PropTypes.array.isRequired,
 };
 
 export default QuestionBoxContainer;

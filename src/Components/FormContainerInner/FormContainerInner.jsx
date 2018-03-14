@@ -19,6 +19,18 @@ class FormContainerInner extends React.Component {
     };
     this.onQuestionChange = this.onQuestionChange.bind(this);
   }
+
+  onQuestionDelete=(index) => {
+    let questionsArray = [...this.state.questions];
+    const questionsArrayFirstPart = questionsArray.slice(0, index);
+    const questionsArraySecondPart = questionsArray.slice(index + 1, questionsArray.length);
+    questionsArray = questionsArrayFirstPart.concat(questionsArraySecondPart);
+    this.setState({
+      questions: questionsArray,
+    });
+    console.log(this.state.questions);
+  }
+
   onSubmitHandler() {
     Axios({
       method: 'POST',
@@ -59,28 +71,27 @@ class FormContainerInner extends React.Component {
     });
   }
 
-  populateQuestions() {
-    return this.state.questions.map((question, index) => (
-      <div className="Question-Repeat-Component">
-        <QuestionBoxContainer
-          questionNumber={index}
-
-          onQuestionChange={this.onQuestionChange}
-        />
-      </div>
-    ));
-  }
+  populateQuestions = () => this.state.questions.map((question, index) => (
+    <div className="Question-Repeat-Component">
+      <QuestionBoxContainer
+        questionNumber={index}
+        questionText={question.questionText}
+        isRequired={question.isRequired}
+        questionType={question.questionType}
+        onQuestionChange={this.onQuestionChange}
+        onQuestionDelete={this.onQuestionDelete}
+      />
+    </div>
+  ))
 
   render() {
     return (
       <div className="FormContainerInner">
         <FormHeader
           onAddClick={() => this.onAdd()}
-          formTitle={this.state.formTitle}
           onSubmitHandler={() => this.onSubmitHandler()}
           onFormTitleChange={event => this.onFormTitleChange(event)}
         />
-        {/* <QuestionBoxContainer /> */}
         {this.populateQuestions()}
       </div>
     );

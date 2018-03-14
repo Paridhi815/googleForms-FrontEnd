@@ -55,7 +55,6 @@ class DisplayForms extends React.Component {
                   onResponseClick={formId => this.props.onResponseClick(formId)}
                 />
                 ))}
-              <AvailableForms />
             </div>
           </Body>
         </div>

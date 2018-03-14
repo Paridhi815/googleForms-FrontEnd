@@ -10,6 +10,8 @@ class QuestionOperations extends React.Component {
       questionIsRequired: props.isRequired,
     };
   }
+
+
   handleIsRequiredChange(event) {
     this.setState({
       questionIsRequired: event.target.checked,
@@ -23,7 +25,7 @@ class QuestionOperations extends React.Component {
       <div className="QuestionOperations">
         <button
           className="Question-Delete-Button"
-          onClick={() => this.props.onDelete()}
+          onClick={() => this.props.onQuestionDelete(this.props.questionNumber)}
         >
           <i className="material-icons Delete-Button">delete</i>
         </button>
@@ -31,7 +33,7 @@ class QuestionOperations extends React.Component {
           <input
             type="checkbox"
             name="isRequired"
-            value={this.state.questionIsRequired}
+            value={this.props.questionIsRequired}
             className="Check-ifRequired"
             onChange={event => this.handleIsRequiredChange(event)}
           />
@@ -44,10 +46,11 @@ class QuestionOperations extends React.Component {
 }
 
 QuestionOperations.propTypes = {
-  onDelete: PropTypes.func.isRequired,
+  // onQuestionDelete: PropTypes.func.isRequired,
   onQuestionChange: PropTypes.func.isRequired,
   questionNumber: PropTypes.number.isRequired,
   isRequired: PropTypes.bool.isRequired,
+  questions: PropTypes.array.isRequired,
 };
 
 QuestionOperations.defaultProps = {

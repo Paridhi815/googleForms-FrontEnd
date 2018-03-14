@@ -1,0 +1,4 @@
+
+
+.Responses:nth-child(odd) { background: rgb(235,232,247); }
+.Responses:nth-child(even) { background: rgb(249,250,254); }
