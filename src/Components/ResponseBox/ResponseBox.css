@@ -1,0 +1,32 @@
+.ResponseBox{
+    width:100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    top:0%;
+    right:0%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 5%;
+}
+/* 
+.ResponseBox:nth-child(odd) { background: blue; }
+.ResponseBox:nth-child(even) { background: green; } */
+
+.Response-FormTitle{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.Response-Question{
+    font-size: 25px;
+    margin-top: 3%;
+    font-weight: bold;
+}
+
+.Last{
+    font-weight: lighter;
+    font-family: 'Helvetica nueue';
+    margin: 0;
+}

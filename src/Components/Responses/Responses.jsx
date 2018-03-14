@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './Responses.css';
 
 class Responses extends React.Component {
@@ -11,7 +11,7 @@ class Responses extends React.Component {
   }
   responsesDisplay() {
     return this.props.responses.map(eachAnswer => (
-      <div>
+      <div className="Responses">
         {eachAnswer.answerText}
       </div>
     ));
@@ -27,7 +27,7 @@ class Responses extends React.Component {
 }
 
 Responses.propTypes = {
-//   onAnswerSubmit: PropTypes.func.isRequired,
+  responses: PropTypes.array.isRequired,
 };
 
 Responses.defaultProps = {

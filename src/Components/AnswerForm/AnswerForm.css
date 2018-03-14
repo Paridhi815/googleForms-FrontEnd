@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    padding: 5%;
 }
 
 .Answer-Input{
@@ -21,4 +22,13 @@
   }
   .Answer-Input:focus{
       outline: none;
+  }
+
+  .AnswerForm-FormTitle{
+      font-size: 50px;
+  }
+
+  .AnswerForm-questions{
+      font-size: 25px;
+      margin-top: 5%;
   }

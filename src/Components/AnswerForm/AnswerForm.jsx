@@ -38,7 +38,7 @@ class AnswerForm extends React.Component {
   displayQuestions=() => (
     this.props.questions.map(question => (
       <div>
-        <div>
+        <div className="AnswerForm-questions">
           {question.questionText}
         </div>
         {this.displayAnswers(question.questionType, question.id)}
@@ -79,7 +79,9 @@ class AnswerForm extends React.Component {
   render() {
     return (
       <div className="AnswerForm">
-        {this.props.formTitle}
+        <div className="AnswerForm-FormTitle">
+          {this.props.formTitle}
+        </div>
         {this.displayQuestions()}
 
         <SubmitButton

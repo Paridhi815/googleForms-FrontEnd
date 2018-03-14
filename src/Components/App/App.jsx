@@ -15,6 +15,7 @@ class App extends React.Component {
       formTitle: '',
       questions: [],
       questionResponses: [],
+      formName: '',
     };
   }
 
@@ -59,6 +60,7 @@ class App extends React.Component {
       this.setState({
         pageNumber: 3,
         questionResponses: response.data[0].questions,
+        formName: response.data[0].title,
       });
     });
     console.log('res', this.state.questionResponses);
@@ -93,11 +95,10 @@ class App extends React.Component {
       );
     }
     return (
-      <div>
-        <ResponsesContainer
-          questionResponses={this.state.questionResponses}
-        />
-      </div>
+      <ResponsesContainer
+        questionResponses={this.state.questionResponses}
+        formTitle={this.state.formName}
+      />
     );
   }
 }
